@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MEIN校验位计算</title>
+</head>
+
+<body>
+    <div class="header">
+        <h2> 机械环保代码（MEIN）校验位计算</h2>
+    </div>
+
+    <div class="content">
+        <!-- 用户输入 -->
+        <div>
+            <p>请输入企业标识：<input id="MEIN1_3" placeholder="企业代码后三位"></p>
+            <p>请选择机械类别：
+                <select id="MEIN4">
+                    <option value="1">工程机械</option>
+                    <option value="2">农业机械</option>
+                    <option value="3">矿山机械</option>
+                    <option value="4">林业机械</option>
+                    <option value="5">渔业机械</option>
+                    <option value="6">发电机</option>
+                    <option value="7">其它</option>
+                </select>
+            </p>
+            <p>请选择燃料类型：
+                <select id="MEIN5">
+                    <option value="1">柴油</option>
+                    <option value="2">汽油</option>
+                    <option value="3">燃气</option>
+                    <option value="4">其它</option>
+                </select>
+            </p>
+            <p>请输入器械说明：<input id="MEIN6_8" placeholder="即环保公开编号的第16~18位"></p>
+            <p>请选择制造年份：
+                <select id="MEIN10">
+                    <option value="F">2015</option>
+                    <option value="G">2016</option>
+                    <option value="H">2017</option>
+                    <option value="J">2018</option>
+                    <option value="K">2019</option>
+                    <option value="L">2020</option>
+                    <option value="M">2021</option>
+                    <option value="N">2022</option>
+                    <option value="P">2023</option>
+                    <option value="R">2024</option>
+                    <option value="S">2025</option>
+                    <option value="T">2026</option>
+                    <option value="V">2027</option>
+                    <option value="W">2028</option>
+                    <option value="X">2029</option>
+                    <option value="Y">2030</option>
+                    <option value="1">2031</option>
+                    <option value="2">2032</option>
+                    <option value="3">2033</option>
+                    <option value="4">2034</option>
+                    <option value="5">2035</option>
+                    <option value="6">2036</option>
+                    <option value="7">2037</option>
+                    <option value="8">2038</option>
+                    <option value="9">2039</option>
+                    <option value="A">2040</option>
+                    <option value="B">2041</option>
+                    <option value="C">2042</option>
+                    <option value="D">2043</option>
+                    <option value="E">2044</option>
+                    <option value="F">2045</option>
+                    <option value="G">2046</option>
+                </select>
+            </p>
+            <p>请选择排放阶段：
+                <select id="MEIN11">
+                    <option value="2">国二</option>
+                    <option value="3">国三</option>
+                    <option value="4">国四</option>
+                    <option value="5">国五</option>
+                    <option value="6">国六</option>
+                </select>
+            </p>
+            <p>请输入自定义码：<input id="MEIN12_17" placeholder="MEIN后六位，由企业自定义"></p>
+            <p><input type="button" value="提交" onclick="calculator()"></p>
+        </div>
+
+        <!-- 计算输出 -->
+        <div>
+            <table id="output_table" border="1">
+                <tr>
+                    <td>序号</td>
+                    <td>MEIN</td>
+                    <td>对应值</td>
+                    <td>加权系数</td>
+                    <td>乘积总和</td>
+                    <td>余数</td>
+                </tr>
+                <tr>
+                    <td>01</td>
+                    <td></td>
+                    <td></td>
+                    <td>8</td>
+                    <td rowspan="17"></td>
+                    <td rowspan="17"></td>
+                </tr>
+                <tr>
+                    <td>02</td>
+                    <td></td>
+                    <td></td>
+                    <td>7</td>
+                </tr>
+                <tr>
+                    <td>03</td>
+                    <td></td>
+                    <td></td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>04</td>
+                    <td></td>
+                    <td></td>
+                    <td>5</td>
+
+                </tr>
+                <tr>
+                    <td>05</td>
+                    <td></td>
+                    <td></td>
+                    <td>4</td>
+
+                </tr>
+                <tr>
+                    <td>06</td>
+                    <td></td>
+                    <td></td>
+                    <td>3</td>
+
+                </tr>
+                <tr>
+                    <td>07</td>
+                    <td></td>
+                    <td></td>
+                    <td>2</td>
+
+                </tr>
+                <tr>
+                    <td>08</td>
+                    <td></td>
+                    <td></td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>09</td>
+                    <td></td>
+                    <td></td>
+                    <td>*</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td></td>
+                    <td></td>
+                    <td>9</td>
+
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td></td>
+                    <td></td>
+                    <td>8</td>
+
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td></td>
+                    <td></td>
+                    <td>7</td>
+
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td></td>
+                    <td></td>
+                    <td>6</td>
+
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td></td>
+                    <td></td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td></td>
+                    <td></td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td></td>
+                    <td></td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td></td>
+                    <td></td>
+                    <td>2</td>
+                </tr>
+            </table>
+            <div id="output_text">
+                <h4>该产品完整的机械环保代码为：<span id="MEIN"></span>。</h4>
+                <h4>经计算，确定此机械环保代码中的检验位字码为<span id="result"></span>。</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <h6>日复一日，必有精进</h6>
+    </div>
+</body>
+
+<script type="text/javascript">
+    function calculator() {
+        // 一、获取数据
+        var MEIN1_3 = document.getElementById("MEIN1_3").value
+        var MEIN4_select = document.getElementById("MEIN4")
+        var MEIN4 = MEIN4_select.options[MEIN4_select.selectedIndex].value
+        var MEIN5_select = document.getElementById("MEIN5")
+        var MEIN5 = MEIN5_select.options[MEIN5_select.selectedIndex].value
+        var MEIN6_8 = document.getElementById("MEIN6_8").value
+        var MEIN10_select = document.getElementById("MEIN10")
+        var MEIN10 = MEIN10_select.options[MEIN10_select.selectedIndex].value
+        var MEIN11_select = document.getElementById("MEIN11")
+        var MEIN11 = MEIN11_select.options[MEIN11_select.selectedIndex].value
+        var MEIN12_17 = document.getElementById("MEIN12_17").value
+        var MEIN = MEIN1_3 + MEIN4 + MEIN5 + MEIN6_8 + MEIN10 + MEIN11 + MEIN12_17
+        var regex = /(\d|[ABCDEFGHJKLMNPQRSTUVWXYZ]){16}/
+        if (!regex.test(MEIN)) {
+            alert("数据格式有误，请仔细检测")
+            return
+        }
+        // 二、计算对应值
+        var MEIN_NUMBER = MEIN.toUpperCase()
+            .replace(/A/g, "1")
+            .replace(/B/g, "2")
+            .replace(/C/g, "3")
+            .replace(/D/g, "4")
+            .replace(/E/g, "5")
+            .replace(/F/g, "6")
+            .replace(/G/g, "7")
+            .replace(/H/g, "8")
+            .replace(/J/g, "1")
+            .replace(/K/g, "2")
+            .replace(/L/g, "3")
+            .replace(/M/g, "4")
+            .replace(/N/g, "5")
+            .replace(/P/g, "7")
+            .replace(/R/g, "9")
+            .replace(/S/g, "2")
+            .replace(/T/g, "3")
+            .replace(/U/g, "4")
+            .replace(/V/g, "5")
+            .replace(/W/g, "6")
+            .replace(/X/g, "7")
+            .replace(/Y/g, "8")
+            .replace(/Z/g, "9")
+        // 三、计算校验位
+        const WEIGHT_ARR = [8, 7, 6, 5, 4, 3, 2, 10, 9, 8, 7, 6, 5, 4, 3, 2]
+        var product = 0;
+        for (let i = 0; i < 16; i++) {
+            product += MEIN_NUMBER[i] * WEIGHT_ARR[i]
+        }
+        var result = product % 11
+        result = result == 10 ? "X" : result
+        // 四、页面展示
+        document.getElementById("result").innerText = result
+        document.getElementById("MEIN").innerText = MEIN
+        document.getElementById("result").style.color = "red"
+        document.getElementById("output_text").style.display = "block"
+    }
+</script>
+
+<style>
+    .header {
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer {
+        width: 100%;
+        height: 10%;
+        text-align: center;
+        position: fixed;
+        bottom: 0px;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+
+    #output_table {
+        display: none;
+    }
+
+    #output_text {
+        display: none;
+    }
+</style>
+
+</html>
