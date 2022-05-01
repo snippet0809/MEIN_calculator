@@ -250,7 +250,7 @@
         // 一、获取数据
         let MEIN16 = getMEIN16()
         if (MEIN16 == null) {
-            alert("数据格式有误，请仔细检测")
+            alert("数据格式有误，请仔细检查")
             return
         }
         // 二、计算对应值
@@ -375,14 +375,11 @@
         text-align: center;
     }
 
-    table {
-        border-collapse: collapse;
-    }
-
     #output_table {
         width: 20rem;
-        border-spacing: 0;
         display: none;
+        border-collapse: collapse;
+        border-spacing: 0;
     }
 
     #output_table td {
