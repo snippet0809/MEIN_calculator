@@ -246,6 +246,7 @@
     let MEIN17, MEIN_NUMBER17
     const WEIGHT_ARR16 = [8, 7, 6, 5, 4, 3, 2, 10, 9, 8, 7, 6, 5, 4, 3, 2]
 
+    // 主函数
     function calculator() {
         // 一、获取数据
         let MEIN16 = getMEIN16()
@@ -270,7 +271,6 @@
 
     // 获取16位的MEIN
     function getMEIN16() {
-        // 一、获取数据
         let MEIN1_3 = document.getElementById("MEIN1_3").value;
         let MEIN4_select = document.getElementById("MEIN4");
         let MEIN4 = MEIN4_select.options[MEIN4_select.selectedIndex].value;
@@ -285,7 +285,7 @@
         let MEIN16 = MEIN1_3 + MEIN4 + MEIN5 + MEIN6_8 + MEIN10 + MEIN11 + MEIN12_17;
         MEIN16 = MEIN16.toUpperCase()
         const regex = /(\d|[ABCDEFGHJKLMNPQRSTUVWXYZ]){16}/;
-        return regex.test(MEIN16) ? MEIN16 : null;
+        return MEIN1_3.length === 3 && MEIN6_8.length === 3 && MEIN12_17.length === 6 && regex.test(MEIN16) ? MEIN16 : null;
     }
 
     // 获取16位的对应码
@@ -326,6 +326,15 @@
         return result === 10 ? "X" : result
     }
 
+    // 一键复制MEIN
+    function copyMEIN17() {
+        navigator.clipboard.writeText(MEIN17).then(function () {
+            alert("复制成功")
+        }, function () {
+            alert("复制失败，无剪切板权限")
+        });
+    }
+
     // 填充表格
     function fillTable() {
         const output_table = document.getElementById("output_table")
@@ -343,15 +352,6 @@
         }
         output_table.rows[18].cells[4].innerText = sum.toString()
         output_table.rows[1].cells[5].innerText = MEIN17[8]
-    }
-
-    // 一键复制MEIN
-    function copyMEIN17() {
-        navigator.clipboard.writeText(MEIN17).then(function () {
-            alert("复制成功")
-        }, function () {
-            alert("复制失败，无剪切板权限")
-        });
     }
 
     // 改变表格的显示状态
