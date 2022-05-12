@@ -8,237 +8,237 @@
 </head>
 
 <body>
-<div class="header">
-    <h2> 机械环保代码（MEIN）校验位计算</h2>
-</div>
-
-<div class="content">
-    <!-- 用户输入 -->
-    <div>
-        <p><label for="MEIN1_3">请输入企业标识：</label><input id="MEIN1_3" placeholder="企业代码后三位" value="T40"></p>
-        <p>
-            <label for="MEIN4">请选择机械类别：</label>
-            <select id="MEIN4">
-                <option value="1">工程机械</option>
-                <option value="2">农业机械</option>
-                <option value="3">矿山机械</option>
-                <option value="4">林业机械</option>
-                <option value="5">渔业机械</option>
-                <option value="6">发电机</option>
-                <option value="7">其它</option>
-            </select>
-        </p>
-        <p>
-            <label for="MEIN5">请选择燃料类型：</label>
-            <select id="MEIN5">
-                <option value="1">柴油</option>
-                <option value="2">汽油</option>
-                <option value="3">燃气</option>
-                <option value="4">其它</option>
-            </select>
-        </p>
-        <p><label for="MEIN6_8">请输入器械说明：</label><input id="MEIN6_8" placeholder="即环保公开编号的第16~18位"></p>
-        <p>
-            <label for="MEIN10">请选择制造年份：</label>
-            <select id="MEIN10">
-                <option value="F">2015</option>
-                <option value="G">2016</option>
-                <option value="H">2017</option>
-                <option value="J">2018</option>
-                <option value="K">2019</option>
-                <option value="L">2020</option>
-                <option value="M">2021</option>
-                <option value="N" selected="selected">2022</option>
-                <option value="P">2023</option>
-                <option value="R">2024</option>
-                <option value="S">2025</option>
-                <option value="T">2026</option>
-                <option value="V">2027</option>
-                <option value="W">2028</option>
-                <option value="X">2029</option>
-                <option value="Y">2030</option>
-                <option value="1">2031</option>
-                <option value="2">2032</option>
-                <option value="3">2033</option>
-                <option value="4">2034</option>
-                <option value="5">2035</option>
-                <option value="6">2036</option>
-                <option value="7">2037</option>
-                <option value="8">2038</option>
-                <option value="9">2039</option>
-                <option value="A">2040</option>
-                <option value="B">2041</option>
-                <option value="C">2042</option>
-                <option value="D">2043</option>
-                <option value="E">2044</option>
-                <option value="F">2045</option>
-                <option value="G">2046</option>
-            </select>
-        </p>
-        <p>
-            <label for="MEIN11">请选择排放阶段：</label>
-            <select id="MEIN11">
-                <option value="2">国二</option>
-                <option value="3" selected="selected">国三</option>
-                <option value="4">国四</option>
-                <option value="5">国五</option>
-                <option value="6">国六</option>
-            </select>
-        </p>
-        <p><label for="MEIN12_17">请输入自定义码：</label><input id="MEIN12_17" placeholder="MEIN后六位，由企业自定义"></p>
-        <p><input type="button" value="提交" onclick="calculator()"></p>
+    <div class="header">
+        <h2> 机械环保代码（MEIN）校验位计算</h2>
     </div>
 
-    <!-- 计算输出 -->
-    <div>
-        <table id="output_table">
-            <tr>
-                <td>序号</td>
-                <td>MEIN</td>
-                <td>对应值</td>
-                <td>加权系数</td>
-                <td>乘积总和</td>
-                <td>余数</td>
-            </tr>
-            <tr>
-                <td>01</td>
-                <td></td>
-                <td></td>
-                <td>8</td>
-                <td></td>
-                <td rowspan="17"></td>
-            </tr>
-            <tr>
-                <td>02</td>
-                <td></td>
-                <td></td>
-                <td>7</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>03</td>
-                <td></td>
-                <td></td>
-                <td>6</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>04</td>
-                <td></td>
-                <td></td>
-                <td>5</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>05</td>
-                <td></td>
-                <td></td>
-                <td>4</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>06</td>
-                <td></td>
-                <td></td>
-                <td>3</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>07</td>
-                <td></td>
-                <td></td>
-                <td>2</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>08</td>
-                <td></td>
-                <td></td>
-                <td>10</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>09</td>
-                <td></td>
-                <td></td>
-                <td>*</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td></td>
-                <td></td>
-                <td>9</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>11</td>
-                <td></td>
-                <td></td>
-                <td>8</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>12</td>
-                <td></td>
-                <td></td>
-                <td>7</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>13</td>
-                <td></td>
-                <td></td>
-                <td>6</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>14</td>
-                <td></td>
-                <td></td>
-                <td>5</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>15</td>
-                <td></td>
-                <td></td>
-                <td>4</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>16</td>
-                <td></td>
-                <td></td>
-                <td>3</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>17</td>
-                <td></td>
-                <td></td>
-                <td>2</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>总和</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td></td>
-                <td>-</td>
-            </tr>
-        </table>
-        <div id="output_text">
-            <h4>经计算，确定此机械环保代码中的检验位字码为 <span id="result"></span>。</h4>
-            <h4>该产品完整的机械环保代码为： <span id="MEIN"></span>。</h4>
+    <div class="content">
+        <!-- 用户输入 -->
+        <div>
+            <p><label for="MEIN1_3">请输入企业标识：</label><input id="MEIN1_3" placeholder="企业代码后三位" value="T40"></p>
             <p>
-                <input type="button" value="复制MEIN" onclick="copyMEIN17()">
-                <input type="button" id="tableButton" value="查看对照表" onclick="changeDisplay()">
+                <label for="MEIN4">请选择机械类别：</label>
+                <select id="MEIN4">
+                    <option value="1">工程机械</option>
+                    <option value="2">农业机械</option>
+                    <option value="3">矿山机械</option>
+                    <option value="4">林业机械</option>
+                    <option value="5">渔业机械</option>
+                    <option value="6">发电机</option>
+                    <option value="7">其它</option>
+                </select>
             </p>
+            <p>
+                <label for="MEIN5">请选择燃料类型：</label>
+                <select id="MEIN5">
+                    <option value="1">柴油</option>
+                    <option value="2">汽油</option>
+                    <option value="3">燃气</option>
+                    <option value="4">其它</option>
+                </select>
+            </p>
+            <p><label for="MEIN6_8">请输入器械说明：</label><input id="MEIN6_8" placeholder="即环保公开编号的第16~18位"></p>
+            <p>
+                <label for="MEIN10">请选择制造年份：</label>
+                <select id="MEIN10">
+                    <option value="F">2015</option>
+                    <option value="G">2016</option>
+                    <option value="H">2017</option>
+                    <option value="J">2018</option>
+                    <option value="K">2019</option>
+                    <option value="L">2020</option>
+                    <option value="M">2021</option>
+                    <option value="N" selected="selected">2022</option>
+                    <option value="P">2023</option>
+                    <option value="R">2024</option>
+                    <option value="S">2025</option>
+                    <option value="T">2026</option>
+                    <option value="V">2027</option>
+                    <option value="W">2028</option>
+                    <option value="X">2029</option>
+                    <option value="Y">2030</option>
+                    <option value="1">2031</option>
+                    <option value="2">2032</option>
+                    <option value="3">2033</option>
+                    <option value="4">2034</option>
+                    <option value="5">2035</option>
+                    <option value="6">2036</option>
+                    <option value="7">2037</option>
+                    <option value="8">2038</option>
+                    <option value="9">2039</option>
+                    <option value="A">2040</option>
+                    <option value="B">2041</option>
+                    <option value="C">2042</option>
+                    <option value="D">2043</option>
+                    <option value="E">2044</option>
+                    <option value="F">2045</option>
+                    <option value="G">2046</option>
+                </select>
+            </p>
+            <p>
+                <label for="MEIN11">请选择排放阶段：</label>
+                <select id="MEIN11">
+                    <option value="2">国二</option>
+                    <option value="3" selected="selected">国三</option>
+                    <option value="4">国四</option>
+                    <option value="5">国五</option>
+                    <option value="6">国六</option>
+                </select>
+            </p>
+            <p><label for="MEIN12_17">请输入自定义码：</label><input id="MEIN12_17" placeholder="MEIN后六位，由企业自定义"></p>
+            <p><input type="button" value="提交" onclick="calculator()"></p>
+        </div>
+
+        <!-- 计算输出 -->
+        <div>
+            <table id="output_table">
+                <tr>
+                    <td>序号</td>
+                    <td>MEIN</td>
+                    <td>对应值</td>
+                    <td>加权系数</td>
+                    <td>乘积总和</td>
+                    <td>余数</td>
+                </tr>
+                <tr>
+                    <td>01</td>
+                    <td></td>
+                    <td></td>
+                    <td>8</td>
+                    <td></td>
+                    <td rowspan="17"></td>
+                </tr>
+                <tr>
+                    <td>02</td>
+                    <td></td>
+                    <td></td>
+                    <td>7</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>03</td>
+                    <td></td>
+                    <td></td>
+                    <td>6</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>04</td>
+                    <td></td>
+                    <td></td>
+                    <td>5</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>05</td>
+                    <td></td>
+                    <td></td>
+                    <td>4</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>06</td>
+                    <td></td>
+                    <td></td>
+                    <td>3</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>07</td>
+                    <td></td>
+                    <td></td>
+                    <td>2</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>08</td>
+                    <td></td>
+                    <td></td>
+                    <td>10</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>09</td>
+                    <td></td>
+                    <td></td>
+                    <td>*</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td></td>
+                    <td></td>
+                    <td>9</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td></td>
+                    <td></td>
+                    <td>8</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td></td>
+                    <td></td>
+                    <td>7</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td></td>
+                    <td></td>
+                    <td>6</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td></td>
+                    <td></td>
+                    <td>5</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td></td>
+                    <td></td>
+                    <td>4</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td></td>
+                    <td></td>
+                    <td>3</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td></td>
+                    <td></td>
+                    <td>2</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>总和</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td></td>
+                    <td>-</td>
+                </tr>
+            </table>
+            <div id="output_text">
+                <h4>经计算，确定此机械环保代码中的检验位字码为 <span id="result"></span>。</h4>
+                <h4>该产品完整的机械环保代码为： <span id="MEIN"></span>。</h4>
+                <p>
+                    <input type="button" value="复制MEIN" onclick="copyMEIN17()">
+                    <input type="button" id="tableButton" value="查看对照表" onclick="changeDisplay()">
+                </p>
+            </div>
         </div>
     </div>
-</div>
 </body>
 
 <script type="text/javascript">
@@ -369,7 +369,6 @@
 </script>
 
 <style>
-
     .header {
         width: 100%;
         text-align: center;
