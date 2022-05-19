@@ -338,7 +338,7 @@
     // 填充表格
     function fillTable() {
         const output_table = document.getElementById("output_table")
-        const WEIGHT_ARR17 = WEIGHT_ARR16
+        const WEIGHT_ARR17 = JSON.parse(JSON.stringify(WEIGHT_ARR16))
         WEIGHT_ARR17.splice(8, 0, 0)
         let sum = 0
         for (let i = 0; i < MEIN17.length; i++) {
