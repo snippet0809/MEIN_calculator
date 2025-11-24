@@ -15,7 +15,7 @@
     <div class="content">
         <!-- 用户输入 -->
         <div>
-            <p><label for="MEIN1_3">请输入企业标识：</label><input id="MEIN1_3" placeholder="企业代码后三位" value="T40"></p>
+            <p><label for="MEIN1_3">请输入企业标识：</label><input id="MEIN1_3" placeholder="企业代码后三位" value="0T4"></p>
             <p>
                 <label for="MEIN4">请选择机械类别：</label>
                 <select id="MEIN4">
@@ -48,7 +48,7 @@
                     <option value="K">2019</option>
                     <option value="L">2020</option>
                     <option value="M">2021</option>
-                    <option value="N" selected="selected">2022</option>
+                    <option value="N">2022</option>
                     <option value="P">2023</option>
                     <option value="R">2024</option>
                     <option value="S">2025</option>
@@ -79,8 +79,8 @@
                 <label for="MEIN11">请选择排放阶段：</label>
                 <select id="MEIN11">
                     <option value="2">国二</option>
-                    <option value="3" selected="selected">国三</option>
-                    <option value="4">国四</option>
+                    <option value="3">国三</option>
+                    <option value="4" selected="selected">国四</option>
                     <option value="5">国五</option>
                     <option value="6">国六</option>
                 </select>
@@ -245,6 +245,21 @@
 
     let MEIN17, MEIN_NUMBER17
     const WEIGHT_ARR16 = [8, 7, 6, 5, 4, 3, 2, 10, 9, 8, 7, 6, 5, 4, 3, 2]
+
+    // 页面加载完成后执行
+    window.onload = function () {
+        // 获取当前年份并减去2015得到偏移量（因为选项从2015开始）
+        const currentYear = new Date().getFullYear();
+        const yearOffset = currentYear - 2015;
+
+        // 获取MEIN10下拉框元素
+        const selectElement = document.getElementById("MEIN10");
+
+        // 如果偏移量在有效范围内，则设置默认选项
+        if (yearOffset >= 0 && yearOffset < selectElement.options.length) {
+            selectElement.selectedIndex = yearOffset;
+        }
+    }
 
     // 主函数
     function calculator() {
