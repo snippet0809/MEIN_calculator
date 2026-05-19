@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
@@ -8,237 +8,271 @@
 </head>
 
 <body>
-    <div class="header">
-        <h2> 机械环保代码（MEIN）校验位计算</h2>
-    </div>
-
-    <div class="content">
-        <!-- 用户输入 -->
-        <div>
-            <p><label for="MEIN1_3">请输入企业标识：</label><input id="MEIN1_3" placeholder="企业代码后三位" value="0T4"></p>
-            <p>
-                <label for="MEIN4">请选择机械类别：</label>
-                <select id="MEIN4">
-                    <option value="1">工程机械</option>
-                    <option value="2">农业机械</option>
-                    <option value="3">矿山机械</option>
-                    <option value="4">林业机械</option>
-                    <option value="5">渔业机械</option>
-                    <option value="6">发电机</option>
-                    <option value="7">其它</option>
-                </select>
-            </p>
-            <p>
-                <label for="MEIN5">请选择燃料类型：</label>
-                <select id="MEIN5">
-                    <option value="1">柴油</option>
-                    <option value="2">汽油</option>
-                    <option value="3">燃气</option>
-                    <option value="4">其它</option>
-                </select>
-            </p>
-            <p><label for="MEIN6_8">请输入器械说明：</label><input id="MEIN6_8" placeholder="即环保公开编号的第16~18位"></p>
-            <p>
-                <label for="MEIN10">请选择制造年份：</label>
-                <select id="MEIN10">
-                    <option value="F">2015</option>
-                    <option value="G">2016</option>
-                    <option value="H">2017</option>
-                    <option value="J">2018</option>
-                    <option value="K">2019</option>
-                    <option value="L">2020</option>
-                    <option value="M">2021</option>
-                    <option value="N">2022</option>
-                    <option value="P">2023</option>
-                    <option value="R">2024</option>
-                    <option value="S">2025</option>
-                    <option value="T">2026</option>
-                    <option value="V">2027</option>
-                    <option value="W">2028</option>
-                    <option value="X">2029</option>
-                    <option value="Y">2030</option>
-                    <option value="1">2031</option>
-                    <option value="2">2032</option>
-                    <option value="3">2033</option>
-                    <option value="4">2034</option>
-                    <option value="5">2035</option>
-                    <option value="6">2036</option>
-                    <option value="7">2037</option>
-                    <option value="8">2038</option>
-                    <option value="9">2039</option>
-                    <option value="A">2040</option>
-                    <option value="B">2041</option>
-                    <option value="C">2042</option>
-                    <option value="D">2043</option>
-                    <option value="E">2044</option>
-                    <option value="F">2045</option>
-                    <option value="G">2046</option>
-                </select>
-            </p>
-            <p>
-                <label for="MEIN11">请选择排放阶段：</label>
-                <select id="MEIN11">
-                    <option value="2">国二</option>
-                    <option value="3">国三</option>
-                    <option value="4" selected="selected">国四</option>
-                    <option value="5">国五</option>
-                    <option value="6">国六</option>
-                </select>
-            </p>
-            <p><label for="MEIN12_17">请输入自定义码：</label><input id="MEIN12_17" placeholder="MEIN后六位，由企业自定义"></p>
-            <p><input type="button" value="提交" onclick="calculator()"></p>
+    <header class="header">
+        <div class="header__inner">
+            <p class="header__badge">MEIN Calculator</p>
+            <h1 class="header__title">机械环保代码校验位计算</h1>
+            <p class="header__subtitle">填写下方信息，自动计算第 9 位校验码并生成完整 17 位 MEIN</p>
         </div>
+    </header>
 
-        <!-- 计算输出 -->
-        <div>
-            <table id="output_table">
-                <tr>
-                    <td>序号</td>
-                    <td>MEIN</td>
-                    <td>对应值</td>
-                    <td>加权系数</td>
-                    <td>乘积总和</td>
-                    <td>余数</td>
-                </tr>
-                <tr>
-                    <td>01</td>
-                    <td></td>
-                    <td></td>
-                    <td>8</td>
-                    <td></td>
-                    <td rowspan="17"></td>
-                </tr>
-                <tr>
-                    <td>02</td>
-                    <td></td>
-                    <td></td>
-                    <td>7</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>03</td>
-                    <td></td>
-                    <td></td>
-                    <td>6</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>04</td>
-                    <td></td>
-                    <td></td>
-                    <td>5</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>05</td>
-                    <td></td>
-                    <td></td>
-                    <td>4</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>06</td>
-                    <td></td>
-                    <td></td>
-                    <td>3</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>07</td>
-                    <td></td>
-                    <td></td>
-                    <td>2</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>08</td>
-                    <td></td>
-                    <td></td>
-                    <td>10</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>09</td>
-                    <td></td>
-                    <td></td>
-                    <td>*</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td></td>
-                    <td></td>
-                    <td>9</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>11</td>
-                    <td></td>
-                    <td></td>
-                    <td>8</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td></td>
-                    <td></td>
-                    <td>7</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>13</td>
-                    <td></td>
-                    <td></td>
-                    <td>6</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>14</td>
-                    <td></td>
-                    <td></td>
-                    <td>5</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>15</td>
-                    <td></td>
-                    <td></td>
-                    <td>4</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>16</td>
-                    <td></td>
-                    <td></td>
-                    <td>3</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>17</td>
-                    <td></td>
-                    <td></td>
-                    <td>2</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>总和</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td></td>
-                    <td>-</td>
-                </tr>
-            </table>
-            <div id="output_text">
-                <h4>经计算，确定此机械环保代码中的检验位字码为 <span id="result"></span>。</h4>
-                <h4>该产品完整的机械环保代码为： <span id="MEIN"></span>。</h4>
-                <p>
-                    <input type="button" value="复制MEIN" onclick="copyMEIN17()">
-                    <input type="button" id="tableButton" value="查看对照表" onclick="changeDisplay()">
-                </p>
+    <main class="content">
+        <section class="card form-panel">
+            <h2 class="card__title">录入信息</h2>
+            <div class="form-grid">
+                <div class="field-row">
+                    <label class="field-label" for="MEIN1_3">企业标识</label>
+                    <input class="field-input" id="MEIN1_3" type="text" placeholder="企业代码后三位" value="0T4" maxlength="3" autocomplete="off">
+                </div>
+                <div class="field-row">
+                    <label class="field-label" for="MEIN4">机械类别</label>
+                    <select class="field-select" id="MEIN4">
+                        <option value="1">工程机械</option>
+                        <option value="2">农业机械</option>
+                        <option value="3">矿山机械</option>
+                        <option value="4">林业机械</option>
+                        <option value="5">渔业机械</option>
+                        <option value="6">发电机</option>
+                        <option value="7">其它</option>
+                    </select>
+                </div>
+                <div class="field-row">
+                    <label class="field-label" for="MEIN5">燃料类型</label>
+                    <select class="field-select" id="MEIN5">
+                        <option value="1">柴油</option>
+                        <option value="2">汽油</option>
+                        <option value="3">燃气</option>
+                        <option value="4">其它</option>
+                    </select>
+                </div>
+                <div class="field-row">
+                    <label class="field-label" for="MEIN6_8">器械说明</label>
+                    <input class="field-input" id="MEIN6_8" type="text" placeholder="环保公开编号第 16–18 位" maxlength="3" autocomplete="off">
+                </div>
+                <div class="field-row">
+                    <label class="field-label" for="MEIN10">制造年份</label>
+                    <select class="field-select" id="MEIN10">
+                        <option value="F">2015</option>
+                        <option value="G">2016</option>
+                        <option value="H">2017</option>
+                        <option value="J">2018</option>
+                        <option value="K">2019</option>
+                        <option value="L">2020</option>
+                        <option value="M">2021</option>
+                        <option value="N">2022</option>
+                        <option value="P">2023</option>
+                        <option value="R">2024</option>
+                        <option value="S">2025</option>
+                        <option value="T">2026</option>
+                        <option value="V">2027</option>
+                        <option value="W">2028</option>
+                        <option value="X">2029</option>
+                        <option value="Y">2030</option>
+                        <option value="1">2031</option>
+                        <option value="2">2032</option>
+                        <option value="3">2033</option>
+                        <option value="4">2034</option>
+                        <option value="5">2035</option>
+                        <option value="6">2036</option>
+                        <option value="7">2037</option>
+                        <option value="8">2038</option>
+                        <option value="9">2039</option>
+                        <option value="A">2040</option>
+                        <option value="B">2041</option>
+                        <option value="C">2042</option>
+                        <option value="D">2043</option>
+                        <option value="E">2044</option>
+                        <option value="F">2045</option>
+                        <option value="G">2046</option>
+                    </select>
+                </div>
+                <div class="field-row">
+                    <label class="field-label" for="MEIN11">排放阶段</label>
+                    <select class="field-select" id="MEIN11">
+                        <option value="2">国二</option>
+                        <option value="3">国三</option>
+                        <option value="4" selected>国四</option>
+                        <option value="5">国五</option>
+                        <option value="6">国六</option>
+                    </select>
+                </div>
+                <div class="field-row field-row--full">
+                    <label class="field-label" for="MEIN12_17">自定义码</label>
+                    <input class="field-input field-input--wide" id="MEIN12_17" type="text" placeholder="MEIN 第 12–17 位，由企业自定义" maxlength="6" autocomplete="off">
+                </div>
             </div>
-        </div>
-    </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-primary" onclick="calculator()">计算校验位</button>
+            </div>
+        </section>
+
+        <section class="card output-panel">
+            <h2 class="card__title">计算结果</h2>
+            <div id="output_text" class="result-area">
+                <div class="result-card">
+                    <span class="result-card__label">校验位（第 9 位）</span>
+                    <span id="result" class="result-card__value result-card__value--check"></span>
+                </div>
+                <div class="result-card result-card--mein">
+                    <span class="result-card__label">完整 MEIN（17 位）</span>
+                    <span id="MEIN" class="result-card__value result-card__value--mein"></span>
+                </div>
+                <div class="result-actions">
+                    <button type="button" class="btn btn-secondary" onclick="copyMEIN17()">复制 MEIN</button>
+                    <button type="button" id="tableButton" class="btn btn-outline" onclick="changeDisplay()">查看对照表</button>
+                </div>
+            </div>
+            <div class="table-wrap">
+                <table id="output_table" class="data-table">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>MEIN</th>
+                            <th>对应值</th>
+                            <th>加权系数</th>
+                            <th>乘积</th>
+                            <th>余数</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01</td>
+                            <td></td>
+                            <td></td>
+                            <td>8</td>
+                            <td></td>
+                            <td rowspan="17" class="remainder-cell"></td>
+                        </tr>
+                        <tr>
+                            <td>02</td>
+                            <td></td>
+                            <td></td>
+                            <td>7</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>03</td>
+                            <td></td>
+                            <td></td>
+                            <td>6</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>04</td>
+                            <td></td>
+                            <td></td>
+                            <td>5</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>05</td>
+                            <td></td>
+                            <td></td>
+                            <td>4</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>06</td>
+                            <td></td>
+                            <td></td>
+                            <td>3</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>07</td>
+                            <td></td>
+                            <td></td>
+                            <td>2</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>08</td>
+                            <td></td>
+                            <td></td>
+                            <td>10</td>
+                            <td></td>
+                        </tr>
+                        <tr class="check-digit-row">
+                            <td>09</td>
+                            <td></td>
+                            <td></td>
+                            <td>*</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td></td>
+                            <td></td>
+                            <td>9</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td></td>
+                            <td></td>
+                            <td>8</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td></td>
+                            <td></td>
+                            <td>7</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td></td>
+                            <td></td>
+                            <td>6</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>14</td>
+                            <td></td>
+                            <td></td>
+                            <td>5</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>15</td>
+                            <td></td>
+                            <td></td>
+                            <td>4</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>16</td>
+                            <td></td>
+                            <td></td>
+                            <td>3</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>17</td>
+                            <td></td>
+                            <td></td>
+                            <td>2</td>
+                            <td></td>
+                        </tr>
+                        <tr class="sum-row">
+                            <td>总和</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td></td>
+                            <td>—</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p id="output_placeholder" class="output-placeholder">提交表单后，校验位与完整 MEIN 将显示在此处</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>机械环保代码（MEIN）校验位计算工具</p>
+    </footer>
 </body>
 
 <script type="text/javascript">
@@ -246,45 +280,33 @@
     let MEIN17, MEIN_NUMBER17
     const WEIGHT_ARR16 = [8, 7, 6, 5, 4, 3, 2, 10, 9, 8, 7, 6, 5, 4, 3, 2]
 
-    // 页面加载完成后执行
     window.onload = function () {
-        // 获取当前年份并减去2015得到偏移量（因为选项从2015开始）
         const currentYear = new Date().getFullYear();
         const yearOffset = currentYear - 2015;
-
-        // 获取MEIN10下拉框元素
         const selectElement = document.getElementById("MEIN10");
-
-        // 如果偏移量在有效范围内，则设置默认选项
         if (yearOffset >= 0 && yearOffset < selectElement.options.length) {
             selectElement.selectedIndex = yearOffset;
         }
     }
 
-    // 主函数
     function calculator() {
-        // 一、获取数据
         let MEIN16 = getMEIN16()
         if (MEIN16 == null) {
             alert("数据格式有误，请仔细检查")
             return
         }
-        // 二、计算对应值
         let MEIN_NUMBER16 = getMEIN_NUMBER16(MEIN16)
-        // 三、计算校验位
         let result = getCheckNum(MEIN_NUMBER16)
         MEIN17 = MEIN16.slice(0, 8) + result + MEIN16.slice(8, 16)
         MEIN_NUMBER17 = MEIN_NUMBER16.slice(0, 8) + result + MEIN_NUMBER16.slice(8, 16)
-        // 四、填充表格
         fillTable()
-        // 五、默认文字形式展示结果
         document.getElementById("result").innerText = result
         document.getElementById("MEIN").innerText = MEIN17
-        document.getElementById("result").style.color = "red"
-        document.getElementById("output_text").style.display = "block"
+        document.getElementById("output_text").classList.add("is-visible")
+        document.getElementById("output_placeholder").classList.add("is-hidden")
+        document.querySelector(".output-panel").classList.add("has-result")
     }
 
-    // 获取16位的MEIN
     function getMEIN16() {
         let MEIN1_3 = document.getElementById("MEIN1_3").value;
         let MEIN4_select = document.getElementById("MEIN4");
@@ -303,7 +325,6 @@
         return MEIN1_3.length === 3 && MEIN6_8.length === 3 && MEIN12_17.length === 6 && regex.test(MEIN16) ? MEIN16 : null;
     }
 
-    // 获取16位的对应码
     function getMEIN_NUMBER16(MEIN16) {
         return MEIN16
             .replace(/A/g, "1")
@@ -331,7 +352,6 @@
             .replace(/Z/g, "9")
     }
 
-    // 计算校验位
     function getCheckNum(MEIN_NUMBER16) {
         let product = 0;
         for (let i = 0; i < 16; i++) {
@@ -341,7 +361,6 @@
         return result === 10 ? "X" : result
     }
 
-    // 一键复制MEIN
     function copyMEIN17() {
         navigator.clipboard.writeText(MEIN17).then(function () {
             alert("复制成功")
@@ -350,7 +369,6 @@
         });
     }
 
-    // 填充表格
     function fillTable() {
         const output_table = document.getElementById("output_table")
         const WEIGHT_ARR17 = JSON.parse(JSON.stringify(WEIGHT_ARR16))
@@ -369,39 +387,438 @@
         output_table.rows[1].cells[5].innerText = MEIN17[8]
     }
 
-    // 改变表格的显示状态
     function changeDisplay() {
         const output_table = document.getElementById("output_table")
         let tableButton = document.getElementById("tableButton")
-        if (output_table.style.display === "block") {
-            output_table.style.display = "none"
-            tableButton.value = "查看对照表"
-        } else {
-            output_table.style.display = "block"
-            tableButton.value = "隐藏对照表"
-        }
+        const isVisible = output_table.classList.toggle("is-visible")
+        tableButton.textContent = isVisible ? "隐藏对照表" : "查看对照表"
     }
 </script>
 
 <style>
+    :root {
+        --color-bg: #eef4f1;
+        --color-surface: #ffffff;
+        --color-primary: #1a6b52;
+        --color-primary-dark: #145a46;
+        --color-primary-light: #e8f5f0;
+        --color-accent: #c45c26;
+        --color-text: #1c2b26;
+        --color-text-muted: #5c6f68;
+        --color-border: #d4e0db;
+        --color-check: #b45309;
+        --shadow-sm: 0 1px 3px rgba(26, 60, 48, 0.06);
+        --shadow-md: 0 8px 24px rgba(26, 60, 48, 0.1);
+        --radius: 12px;
+        --radius-sm: 8px;
+        --font-sans: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+        --font-mono: "SF Mono", "Cascadia Code", "Consolas", monospace;
+    }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: var(--font-sans);
+        font-size: 15px;
+        line-height: 1.6;
+        color: var(--color-text);
+        background: var(--color-bg);
+        background-image:
+            radial-gradient(ellipse 80% 50% at 50% -20%, rgba(26, 107, 82, 0.12), transparent),
+            linear-gradient(180deg, var(--color-bg) 0%, #e4ece8 100%);
+    }
+
+    /* Header */
     .header {
+        padding: 2.5rem 1.25rem 2rem;
+        text-align: center;
+        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+        color: #fff;
+        box-shadow: var(--shadow-md);
+    }
+
+    .header__inner {
+        max-width: 640px;
+        margin: 0 auto;
+    }
+
+    .header__badge {
+        display: inline-block;
+        margin: 0 0 0.75rem;
+        padding: 0.25rem 0.75rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 999px;
+    }
+
+    .header__title {
+        margin: 0 0 0.5rem;
+        font-size: clamp(1.35rem, 4vw, 1.75rem);
+        font-weight: 700;
+        letter-spacing: 0.02em;
+    }
+
+    .header__subtitle {
+        margin: 0;
+        font-size: 0.9rem;
+        opacity: 0.88;
+        line-height: 1.5;
+    }
+
+    /* Layout */
+    .content {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 1.75rem 1.25rem 3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .card {
+        background: var(--color-surface);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--color-border);
+        padding: 1.5rem 1.5rem 1.75rem;
+    }
+
+    .card__title {
+        margin: 0 0 1.25rem;
+        padding-bottom: 0.75rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--color-primary);
+        border-bottom: 2px solid var(--color-primary-light);
+    }
+
+    /* Form */
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem 1.25rem;
+    }
+
+    .field-row {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+    }
+
+    .field-row--full {
+        grid-column: 1 / -1;
+    }
+
+    .field-label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--color-text-muted);
+    }
+
+    .field-input,
+    .field-select {
         width: 100%;
+        padding: 0.6rem 0.75rem;
+        font-family: inherit;
+        font-size: 0.95rem;
+        color: var(--color-text);
+        background: #fafcfb;
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-sm);
+        transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+        appearance: none;
+    }
+
+    .field-select {
+        padding-right: 2rem;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%235c6f68' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 0.75rem center;
+        cursor: pointer;
+    }
+
+    .field-input:focus,
+    .field-select:focus {
+        outline: none;
+        border-color: var(--color-primary);
+        background: #fff;
+        box-shadow: 0 0 0 3px rgba(26, 107, 82, 0.15);
+    }
+
+    .field-input::placeholder {
+        color: #9aaba4;
+    }
+
+    .field-input--wide {
+        font-family: var(--font-mono);
+        letter-spacing: 0.12em;
+    }
+
+    .form-actions {
+        margin-top: 1.5rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid var(--color-border);
         text-align: center;
     }
 
-    #output_table {
-        width: 20rem;
+    /* Buttons */
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.65rem 1.35rem;
+        font-family: inherit;
+        font-size: 0.95rem;
+        font-weight: 600;
+        line-height: 1.2;
+        border: none;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+    }
+
+    .btn:active {
+        transform: scale(0.98);
+    }
+
+    .btn-primary {
+        min-width: 10rem;
+        color: #fff;
+        background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+        box-shadow: 0 2px 8px rgba(26, 107, 82, 0.35);
+    }
+
+    .btn-primary:hover {
+        filter: brightness(1.06);
+    }
+
+    .btn-secondary {
+        color: #fff;
+        background: var(--color-accent);
+    }
+
+    .btn-secondary:hover {
+        filter: brightness(1.08);
+    }
+
+    .btn-outline {
+        color: var(--color-primary);
+        background: transparent;
+        border: 1.5px solid var(--color-primary);
+    }
+
+    .btn-outline:hover {
+        background: var(--color-primary-light);
+    }
+
+    /* Results */
+    .result-area {
         display: none;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .result-area.is-visible {
+        display: flex;
+        animation: fadeIn 0.35s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(6px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .result-card {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        padding: 1rem 1.15rem;
+        background: var(--color-primary-light);
+        border-radius: var(--radius-sm);
+        border-left: 4px solid var(--color-primary);
+    }
+
+    .result-card--mein {
+        border-left-color: var(--color-accent);
+        background: #fef6f0;
+    }
+
+    .result-card__label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--color-text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+    }
+
+    .result-card__value {
+        font-weight: 700;
+        line-height: 1.3;
+    }
+
+    .result-card__value--check {
+        font-size: 2rem;
+        font-family: var(--font-mono);
+        color: var(--color-check);
+    }
+
+    .result-card__value--mein {
+        font-size: clamp(1rem, 3.5vw, 1.35rem);
+        font-family: var(--font-mono);
+        letter-spacing: 0.08em;
+        word-break: break-all;
+        color: var(--color-text);
+    }
+
+    .result-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .output-placeholder {
+        margin: 0;
+        padding: 2rem 1rem;
+        text-align: center;
+        font-size: 0.9rem;
+        color: var(--color-text-muted);
+        background: #f7faf9;
+        border-radius: var(--radius-sm);
+        border: 1px dashed var(--color-border);
+    }
+
+    .output-placeholder.is-hidden {
+        display: none;
+    }
+
+    .output-panel.has-result .output-placeholder {
+        display: none;
+    }
+
+    /* Table */
+    .table-wrap {
+        margin-top: 1rem;
+        overflow-x: auto;
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--color-border);
+    }
+
+    .data-table {
+        width: 100%;
+        min-width: 28rem;
         border-collapse: collapse;
-        border-spacing: 0;
-    }
-
-    #output_table td {
-        border: 1px solid #999;
-    }
-
-    #output_text {
+        font-size: 0.85rem;
         display: none;
+    }
+
+    .data-table.is-visible {
+        display: table;
+        animation: fadeIn 0.3s ease;
+    }
+
+    .data-table thead {
+        background: var(--color-primary);
+        color: #fff;
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: 0.5rem 0.65rem;
+        text-align: center;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .data-table th {
+        font-weight: 600;
+        font-size: 0.8rem;
+    }
+
+    .data-table tbody tr:nth-child(even) {
+        background: #f7faf9;
+    }
+
+    .data-table tbody tr:hover:not(.sum-row) {
+        background: var(--color-primary-light);
+    }
+
+    .data-table .check-digit-row {
+        background: #fef3c7 !important;
+        font-weight: 600;
+    }
+
+    .data-table .check-digit-row td:nth-child(2),
+    .data-table .check-digit-row td:nth-child(3) {
+        color: var(--color-check);
+        font-family: var(--font-mono);
+        font-size: 1rem;
+    }
+
+    .data-table .sum-row {
+        font-weight: 700;
+        background: var(--color-primary-light) !important;
+    }
+
+    .data-table .remainder-cell {
+        vertical-align: middle;
+        font-weight: 700;
+        font-family: var(--font-mono);
+        font-size: 1.1rem;
+        color: var(--color-check);
+        background: #fef3c7;
+    }
+
+    .data-table td:nth-child(2),
+    .data-table td:nth-child(3) {
+        font-family: var(--font-mono);
+        font-weight: 600;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 1.25rem;
+        text-align: center;
+        font-size: 0.8rem;
+        color: var(--color-text-muted);
+    }
+
+    .footer p {
+        margin: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 560px) {
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .field-row--full {
+            grid-column: auto;
+        }
+
+        .header {
+            padding: 2rem 1rem 1.5rem;
+        }
+
+        .card {
+            padding: 1.25rem 1rem 1.5rem;
+        }
+
+        .result-actions {
+            flex-direction: column;
+        }
+
+        .result-actions .btn {
+            width: 100%;
+        }
     }
 </style>
 
